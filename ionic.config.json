@@ -1,0 +1,9 @@
+{
+  "name": "dating-or-not",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react",
+  "root": "apps/web",
+  "webDir": "dist"
+}

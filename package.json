@@ -6,17 +6,20 @@
   "private": true,
 
   "scripts": {
+    "start": "cd apps/web && npm run dev",
+    "dev": "cd apps/web && npm run dev",
     "dev:web": "cd apps/web && npm run dev",
     "dev:api": "cd apps/api && npm run dev",
+    "build": "cd apps/web && npm install && npm run build",
     "build:web": "cd apps/web && npm run build",
     "build:api": "cd apps/api && npm run build",
-    "build": "npm run build:web",
     "ios:build": "cd apps/web && npm run ios:build",
     "ios:sync": "cd apps/web && npm run ios:sync",
     "ios:open": "cd apps/web && npm run ios:open",
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down",
-    "install:all": "npm install && cd apps/web && npm install && cd ../api && npm install"
+    "install:all": "npm install && cd apps/web && npm install && cd ../api && npm install",
+    "postinstall": "cd apps/web && npm install"
   },
   "keywords": [
     "dating",
