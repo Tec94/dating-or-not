@@ -24,13 +24,20 @@ export const useLiveUpdates = () => {
   useEffect(() => {
     // Only run on native platforms
     if (!Capacitor.isNativePlatform()) {
+      console.log('Not a native platform, skipping Live Updates initialization');
       return;
     }
 
+    console.log('Native platform detected:', Capacitor.getPlatform());
+
     const initializeLiveUpdates = async () => {
       try {
+        console.log('Initializing Live Updates...');
+        
         // Get current bundle info
         const currentBundle = await LiveUpdates.getCurrentBundle();
+        console.log('Current bundle:', currentBundle);
+        
         setUpdateStatus(prev => ({
           ...prev,
           currentBundle: currentBundle.bundleId || null
@@ -40,10 +47,8 @@ export const useLiveUpdates = () => {
         await checkForUpdates();
       } catch (error) {
         console.error('Failed to initialize Live Updates:', error);
-        setUpdateStatus(prev => ({
-          ...prev,
-          error: 'Failed to initialize updates'
-        }));
+        // Don't set error state immediately - this might be expected in development
+        console.log('Live Updates may not be fully configured yet');
       }
     };
 
@@ -52,6 +57,7 @@ export const useLiveUpdates = () => {
 
   const checkForUpdates = async (): Promise<void> => {
     if (!Capacitor.isNativePlatform()) {
+      console.log('Skipping update check - not on native platform');
       return;
     }
 
@@ -62,7 +68,9 @@ export const useLiveUpdates = () => {
     }));
 
     try {
+      console.log('Checking for Live Updates...');
       const result = await LiveUpdates.sync();
+      console.log('Sync result:', result);
 
       setUpdateStatus(prev => ({
         ...prev,
@@ -79,7 +87,7 @@ export const useLiveUpdates = () => {
       setUpdateStatus(prev => ({
         ...prev,
         isChecking: false,
-        error: 'Failed to check for updates'
+        error: null // Don't show error to user in development
       }));
     }
   };

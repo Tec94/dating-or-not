@@ -39,9 +39,7 @@ const config: CapacitorConfig = {
     LiveUpdates: {
       // Enable live updates for over-the-air app updates
       appId: 'com.datingornot.app',
-      channel: 'production',
-      autoUpdateMethod: 'background',
-      maxVersions: 2
+      channel: 'production'
     }
   }
 };
