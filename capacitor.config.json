@@ -1,0 +1,12 @@
+{
+  "appId": "com.datingornot.app",
+  "appName": "Dating or Not",
+  "webDir": "apps/web/dist",
+  "plugins": {
+    "LiveUpdates": {
+      "appId": "b2c542a8",
+      "channel": "production"
+    }
+  }
+}
+
