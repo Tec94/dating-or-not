@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { LiveUpdates, LiveUpdatesSummary } from '@capacitor/live-updates';
+import { LiveUpdates } from '@capacitor/live-updates';
 import { Capacitor } from '@capacitor/core';
 
 interface UpdateStatus {
@@ -62,9 +62,7 @@ export const useLiveUpdates = () => {
     }));
 
     try {
-      const result = await LiveUpdates.sync({
-        updateMethod: 'background'
-      });
+      const result = await LiveUpdates.sync();
 
       setUpdateStatus(prev => ({
         ...prev,
@@ -99,9 +97,7 @@ export const useLiveUpdates = () => {
     }));
 
     try {
-      const result = await LiveUpdates.downloadUpdate({
-        updateMethod: 'background'
-      });
+      const result = await LiveUpdates.sync();
 
       setUpdateStatus(prev => ({
         ...prev,
@@ -139,7 +135,7 @@ export const useLiveUpdates = () => {
     }
   };
 
-  const getUpdateInfo = async (): Promise<LiveUpdatesSummary | null> => {
+  const getUpdateInfo = async (): Promise<any | null> => {
     if (!Capacitor.isNativePlatform()) {
       return null;
     }
