@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { LiveUpdates } from '@capacitor/live-updates';
+import { sync, reload, getConfig } from '@capacitor/live-updates';
 import { Capacitor } from '@capacitor/core';
 export const useLiveUpdates = () => {
     const [updateStatus, setUpdateStatus] = useState({
@@ -20,13 +20,9 @@ export const useLiveUpdates = () => {
         const initializeLiveUpdates = async () => {
             try {
                 console.log('Initializing Live Updates...');
-                // Get current bundle info
-                const currentBundle = await LiveUpdates.getCurrentBundle();
-                console.log('Current bundle:', currentBundle);
-                setUpdateStatus(prev => ({
-                    ...prev,
-                    currentBundle: currentBundle.bundleId || null
-                }));
+                // v0.4.0 has no getCurrentBundle; read config instead
+                const cfg = await getConfig().catch(() => null);
+                setUpdateStatus(prev => ({ ...prev, currentBundle: cfg?.channel ?? null }));
                 // Check for updates on app start
                 await checkForUpdates();
             }
@@ -50,7 +46,7 @@ export const useLiveUpdates = () => {
         }));
         try {
             console.log('Checking for Live Updates...');
-            const result = await LiveUpdates.sync();
+            const result = await sync();
             console.log('Sync result:', result);
             setUpdateStatus(prev => ({
                 ...prev,
@@ -82,15 +78,15 @@ export const useLiveUpdates = () => {
             error: null
         }));
         try {
-            const result = await LiveUpdates.sync();
+            const result = await sync();
             setUpdateStatus(prev => ({
                 ...prev,
                 isDownloading: false,
                 downloadProgress: 100,
                 updateAvailable: false
             }));
-            if (result.bundleId) {
-                console.log('Update downloaded successfully:', result.bundleId);
+            if (result.snapshot?.id) {
+                console.log('Update downloaded successfully:', result.snapshot.id);
                 // Update will be applied on next app restart
             }
         }
@@ -109,7 +105,7 @@ export const useLiveUpdates = () => {
             return;
         }
         try {
-            await LiveUpdates.reload();
+            await reload();
         }
         catch (error) {
             console.error('Failed to reload app:', error);
@@ -122,7 +118,8 @@ export const useLiveUpdates = () => {
             return null;
         }
         try {
-            return await LiveUpdates.getLatestBundle();
+            // v0.4.0 has no getLatestBundle; return current config
+            return await getConfig();
         }
         catch (error) {
             console.error('Failed to get update info:', error);
