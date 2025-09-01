@@ -109,8 +109,8 @@ export const useLiveUpdates = () => {
         updateAvailable: false
       }));
 
-      if (result.bundleId) {
-        console.log('Update downloaded successfully:', result.bundleId);
+      if (result.snapshot?.id) {
+        console.log('Update downloaded successfully:', result.snapshot.id);
         // Update will be applied on next app restart
       }
     } catch (error) {
