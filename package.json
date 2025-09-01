@@ -10,7 +10,7 @@
     "dev": "cd apps/web && npm run dev",
     "dev:web": "cd apps/web && npm run dev",
     "dev:api": "cd apps/api && npm run dev",
-    "build": "cd apps/web && npm install && npm run build",
+    "build": "cd apps/web && npm install && npm run build && npx cap sync ios",
     "build:web": "cd apps/web && npm run build",
     "build:api": "cd apps/api && npm run build",
     "ios:build": "cd apps/web && npm run ios:build",
@@ -40,5 +40,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/yourusername/dating-or-not.git"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.4.3"
   }
 }
