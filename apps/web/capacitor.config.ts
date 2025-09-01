@@ -1,7 +1,7 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'b2c542a8',
+  appId: 'com.datingornot.app',
   appName: 'Dating or Not',
   webDir: 'dist',
   server: {
