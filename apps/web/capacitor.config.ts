@@ -35,6 +35,13 @@ const config: CapacitorConfig = {
     Geolocation: {
       // For dating proximity features
       permissions: ['location']
+    },
+    LiveUpdates: {
+      // Enable live updates for over-the-air app updates
+      appId: 'com.datingornot.app',
+      channel: 'production',
+      autoUpdateMethod: 'background',
+      maxVersions: 2
     }
   }
 };

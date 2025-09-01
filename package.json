@@ -1,0 +1,41 @@
+{
+  "name": "dating-or-not",
+  "version": "1.0.0",
+  "description": "A unique dating app where users can bet on relationship outcomes",
+  "main": "index.js",
+  "private": true,
+
+  "scripts": {
+    "dev:web": "cd apps/web && npm run dev",
+    "dev:api": "cd apps/api && npm run dev",
+    "build:web": "cd apps/web && npm run build",
+    "build:api": "cd apps/api && npm run build",
+    "build": "npm run build:web",
+    "ios:build": "cd apps/web && npm run ios:build",
+    "ios:sync": "cd apps/web && npm run ios:sync",
+    "ios:open": "cd apps/web && npm run ios:open",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "install:all": "npm install && cd apps/web && npm install && cd ../api && npm install"
+  },
+  "keywords": [
+    "dating",
+    "app",
+    "betting",
+    "react",
+    "nodejs",
+    "mongodb",
+    "capacitor",
+    "ios"
+  ],
+  "author": "Dating or Not Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/dating-or-not.git"
+  }
+}
