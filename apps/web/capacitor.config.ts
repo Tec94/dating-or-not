@@ -3,7 +3,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 const config: CapacitorConfig = {
   appId: 'com.datingornot.app',
   appName: 'Dating or Not',
-  webDir: 'dist',
+  webDir: 'www',
   server: {
     // For development - allows live reload from your dev server
     // Comment out for production builds
