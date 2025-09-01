@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { LiveUpdates } from '@capacitor/live-updates';
+import { LiveUpdate } from '@capacitor/live-updates';
 import { Capacitor } from '@capacitor/core';
 
 interface UpdateStatus {
@@ -35,7 +35,7 @@ export const useLiveUpdates = () => {
         console.log('Initializing Live Updates...');
         
         // Get current bundle info
-        const currentBundle = await LiveUpdates.getCurrentBundle();
+        const currentBundle = await LiveUpdate.getCurrentBundle();
         console.log('Current bundle:', currentBundle);
         
         setUpdateStatus(prev => ({
@@ -69,7 +69,7 @@ export const useLiveUpdates = () => {
 
     try {
       console.log('Checking for Live Updates...');
-      const result = await LiveUpdates.sync();
+      const result = await LiveUpdate.sync();
       console.log('Sync result:', result);
 
       setUpdateStatus(prev => ({
@@ -105,7 +105,7 @@ export const useLiveUpdates = () => {
     }));
 
     try {
-      const result = await LiveUpdates.sync();
+      const result = await LiveUpdate.sync();
 
       setUpdateStatus(prev => ({
         ...prev,
@@ -135,7 +135,7 @@ export const useLiveUpdates = () => {
     }
 
     try {
-      await LiveUpdates.reload();
+      await LiveUpdate.reload();
     } catch (error) {
       console.error('Failed to reload app:', error);
       // Fallback to window reload
@@ -149,7 +149,7 @@ export const useLiveUpdates = () => {
     }
 
     try {
-      return await LiveUpdates.getLatestBundle();
+      return await LiveUpdate.getLatestBundle();
     } catch (error) {
       console.error('Failed to get update info:', error);
       return null;
