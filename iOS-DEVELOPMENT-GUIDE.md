@@ -213,6 +213,19 @@ const requestNotificationPermission = async () => {
 };
 ```
 
+### **3. Xcode Release Build Optimizations**
+- Build Settings → Optimization Level: Fast, Whole Module Optimization (Release)
+- Build Active Architecture Only: No (Release)
+- Strip Linked Product: Yes (Release)
+- Dead Code Stripping: Yes (Release)
+- iOS Deployment Target: 14.0 or later
+- Architectures: Standard (arm64)
+
+### **4. macOS (Mac Catalyst) Build**
+- In Xcode target `App` → General → check Mac (if desired)
+- Verify UI with pointer interactions and window resizing
+- Disable unsupported iOS-only entitlements when building for Mac
+
 ## 🔍 **Troubleshooting**
 
 ### **"Could not find Xcode"**
