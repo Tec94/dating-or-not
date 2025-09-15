@@ -1,8 +1,10 @@
-# Live Updates Setup Guide
+# Capacitor Live Updates Setup
 
-## Issue: "capacitor.config.json is not available"
+> Configuration guide for Capacitor Live Updates with Ionic Appflow
 
-This error typically occurs when the Live Updates plugin is trying to initialize but cannot find the proper configuration. Here's how to resolve it:
+## Overview
+
+This guide helps you configure Live Updates for over-the-air app updates without requiring App Store approval for web content changes.
 
 ## Steps to Fix:
 

@@ -1,22 +1,22 @@
-# 📱 iOS Development Guide for Dating-or-Not
+# iOS Development Guide
 
-## 🎯 **iOS Setup Complete!**
+> Complete guide for building and testing Dating-or-Not on iOS devices
 
-Your React web app has been successfully configured for iOS development using **Capacitor**. The iOS project is ready for testing and deployment.
+## 📱 Overview
 
-## 📁 **Project Structure**
+Your React web app is configured for iOS development using **Capacitor**. The iOS project is ready for testing and App Store deployment.
+
+## 📁 Project Structure
 
 ```
 apps/web/
 ├── ios/                     # Native iOS project (Xcode)
 │   └── App/
 │       ├── App.xcodeproj    # Xcode project file
-│       └── App/
-│           ├── public/      # Your built web assets
-│           └── Config/      # iOS app configuration
+│       └── App/             # iOS app configuration & assets
 ├── dist/                    # Built web app
 ├── capacitor.config.ts      # Capacitor configuration
-└── src/                     # Your React source code
+└── src/                     # React source code
 ```
 
 ## 🛠 **Prerequisites for iOS Development**
